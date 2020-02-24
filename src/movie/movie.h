@@ -1,9 +1,9 @@
 // ------------------------------- movie.h --------------------------------
 // Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
 // Created: February 23, 2020
-// Modified: 
+// Modified: February 24, 2020
 // ------------------------------------------------------------------------
-// Purpose: header file for the Movie class.
+// Purpose: Header file for the Movie class.
 // ------------------------------------------------------------------------
 // Class representing a Represents a single movie. Contains information 
 // about the movie itself and how many copies of that movie are available
@@ -12,8 +12,11 @@
 
 #ifndef MOVIE_H
 #define MOVIE_H
+
 #include <iostream>
 #include <string>
+#include "movie.h"
+
 using namespace std;
 
 class Movie {

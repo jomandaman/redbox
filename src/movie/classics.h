@@ -1,18 +1,20 @@
 // ------------------------------ classics.h ------------------------------
 // Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
 // Created: February 23, 2020
-// Modified: 
+// Modified: February 24, 2020
 // ------------------------------------------------------------------------
-// Purpose: header file for the Classics class.
+// Purpose: Header file for the Classics class.
 // ------------------------------------------------------------------------
 // Specifed class for a classics movie.
 // ------------------------------------------------------------------------
 
 #ifndef CLASSICS_H
 #define CLASSICS_H
+
 #include <iostream>
 #include <string>
 #include "movie.h"
+
 using namespace std;
 
 class Classics : public Movie {
