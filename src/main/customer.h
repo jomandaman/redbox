@@ -34,8 +34,6 @@ class Customer {
         String firstName;
         // Last name of the Customer
         String lastName;
-        // All items the customer has borrowed currently 
-        HashTable<Movie*, Integer> borrowedItems;
         // All transactions from this customer
         List<Transaction> transactionHistory;
         

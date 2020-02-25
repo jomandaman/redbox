@@ -24,7 +24,7 @@ class Borrow : public Transaction {
         virtual ~Borrow();
         // Will decrement the stock of a movie and log the Borrow Transaction in
         // the Customer's history field
-        virtual void doTransaction(Store, Customer, Movie);
+        virtual void doTransaction(Store&, Customer&, Movie&) const;
 
     private:
         //-------------------------------------------------Private member fields
@@ -37,7 +37,7 @@ class Borrow : public Transaction {
         // Will check that the movie exists in the Store's inventory and that
         // a Customer exists with the matching ID number
         virtual isValid(string info, HashTable<char, Movie>&,
-                        HashTable<int, Customer>&);
+                        HashTable<int, Customer>&) const;
 };
 
 #endif

@@ -18,17 +18,19 @@ class History : public Transaction {
     public:
         //-------------------------------------------------Public member methods
         // Constructor
-        History(string, HashTable<string, Movie>& HashTable<int, Customer>&);
+        History(string, HashTable<int, Customer>&);
         // Destructor
         virtual ~History();
         // Prints the Customer's transaction history in chronological order
-        virtual void doTransaction(Customer);
+        virtual void doTransaction(Customer&) const;
 
     private:
+        //-------------------------------------------------Private member fields
+        // Pointer to the Customer object associated with this transaction
+        Customer* c;
         //------------------------------------------------Private member methods
         // Will check if a Customer exists with the given ID number
-        virtual isValid(string info, HashTable<char, Movie>&,
-                        HashTable<int, Customer>&);
+        virtual isValid(string info, HashTable<int, Customer>&) const;
 };
 
 #endif

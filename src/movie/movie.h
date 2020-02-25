@@ -20,11 +20,22 @@
 using namespace std;
 
 class Movie {
+
     public:
         // Constructor
         Movie(string);
         // Virtual destructor
         virtual ~Movie();
+        // Accessors
+        string getGenre();
+        string getDirector();
+        string getTitle();
+        int getReleaseYear();
+        int getStockInStore();
+        // Compare to other movies for easy in-order insertion
+        virtual int compareTo(Movie);
+
+    private:
         // Movie type: Comedy, Drama, Classics
         string genre;
         string director;
@@ -32,11 +43,6 @@ class Movie {
         int releaseYear;
         // How many of this movie currently in the store
         int stockInStore;
-        // Compare to other movies for easy in-order insertion
-        virtual int compareTo(Movie);
-
-    private:
-        // possible hepler methods
 
 };
 

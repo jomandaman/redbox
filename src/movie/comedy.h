@@ -22,11 +22,9 @@ class Comedy : public Movie {
         // Constructor
         Comedy(string);
         // Virtual destructor
-        ~Comedy();
+        virtual ~Comedy();
         // Compare to other comedies for easy in-order insertion
         virtual int compareTo(Comedy);
-
-    private:
 
 };
 

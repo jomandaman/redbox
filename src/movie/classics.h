@@ -22,16 +22,14 @@ class Classics : public Movie {
         // Constructor
         Classics(string);
         // Virtual destructor
-        ~Classics();
+        virtual ~Classics();
         // Compare to other comedies for easy in-order insertion
         virtual int compareTo(Classics);
+
+    private:
         // Main actor, specific to classics
         string majorActor;
         int releaseMonth;
-
-
-    private:
-
 };
 
 #endif

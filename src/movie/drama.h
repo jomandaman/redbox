@@ -22,12 +22,9 @@ class Drama: public Movie {
         // Constructor
         Drama(string);
         // Virtual destructor
-        ~Drama();
+        virtual ~Drama();
         // Compare to other dramas for easy in-order insertion
         virtual int compareTo(Drama);
-
-
-    private:
 
 };
 

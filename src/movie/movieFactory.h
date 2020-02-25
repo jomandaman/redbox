@@ -18,10 +18,12 @@
 using namespace std;
 
 class MovieFactory {
+
     public:
     // Instantiates the appropriate type of movie based on the given
     // genre parameter
     Movie* createMovie(string);
+    
 };
 
 #endif

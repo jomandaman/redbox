@@ -1,4 +1,4 @@
-// --------------------------- transactionFactory.h ----------------------------
+// --------------------------- transactionfactory.h ----------------------------
 // Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
 // Created: February 23, 2020
 // Modified: February 24, 2020
@@ -6,8 +6,7 @@
 // Purpose: Header file for the TransactionFactory class.
 // ------------------------------------------------------------------------
 // Class that is responsible for determining what type of Transaction object
-// should be instantiated. Allows for runtime processing of Transaction object
-// instantiation.
+// should be instantiated. Allows for dynamic binding of Transaction objects.
 // ------------------------------------------------------------------------
 
 #ifndef TRANSACTIONFACTORY_H

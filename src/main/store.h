@@ -16,8 +16,9 @@
 #include <fstream>
 #include <string>
 #include <list>
-#include <bintree.h>
+#include <../support/bintree.h>
 #include <hashtable.h>
+#include <integer>
 
 using namespace std;
 
@@ -26,34 +27,26 @@ class Store {
     public:
         // Constructor
         Store(String);
-
         // functions
         // Will fill the inventory field of based on data from input file
-        void populateStoreInventory(ifstream &);
+        void populateInventory(ifstream &);
         // Will create Customer objects and store them in the customers field
         void populateCustomers(ifstream &);
         // Will read in all the commands from the input file and add them to a
         // Linked List
         void readTransactions(ifstream &);
 
-        // data feilds
+    private:
+        // Name of the store
+        String storeName;
         // All available movies
         HashTable<String, BinTree> inventory;
         // All the Customers of the Store
         HashTable<Integer, Customer> customers;
         // All valid transactions that are read in from input file
-        List <Transaction> transactions;
-
-    private:
-        // Name of the store
-        String storeName;
+        List<Transaction> transactions;
         // Will execute all transactions from the transactions field
         void executeTransactions();
-        // Removes a movie from the inventory
-        void removeFromInventory(Movie);
-        // Prints the inventory using the specified requirements for 
-        // each genre of movie
-        void printInventory();
         
 };
 

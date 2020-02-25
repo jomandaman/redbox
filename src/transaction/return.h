@@ -24,7 +24,7 @@ class Return : public Transaction {
         virtual ~Return();
         // Will increment the stock of a movie and log the Return Transaction in
         // the Customer's history field
-        virtual void doTransaction(Store, Customer, Movie);
+        virtual void doTransaction(Store&, Customer&, Movie&) const;
 
     private:
         //-------------------------------------------------Private member fields

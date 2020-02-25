@@ -17,18 +17,17 @@ class Inventory : public Transaction {
     public:
         //-------------------------------------------------Public member methods
         // Constructor
-        Inventory(string, HashTable<string, Movie>& HashTable<int, Customer>&);
+        Inventory(HashTable<string, Movie>&);
         // Destructor
         virtual ~Inventory();
         // Prints the Store's inventory according to the specified requirements 
         // for each different category of Movie
-        virtual void doTransaction(Movie);
+        virtual void doTransaction(HashTable<string, Movie>&) const;
 
     private:
         //------------------------------------------------Private member methods
         // Will check if the Store's inventory is empty
-        virtual isValid(string info, HashTable<char, Movie>&,
-                        HashTable<int, Customer>&);
+        virtual isValid(HashTable<char, Movie>&) const;
 };
 
 #endif
