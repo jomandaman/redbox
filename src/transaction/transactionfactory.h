@@ -1,13 +1,16 @@
 // --------------------------- transactionfactory.h ----------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 23, 2020
-// Modified: February 24, 2020
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
+// -----------------------------------------------------------------------------
+// Purpose: This class defines a factory that is responsible for determining
+// what type of Transaction object should be instantiated based on provided
+// input. Allows for dynamic binding of Transaction objects.
 // ------------------------------------------------------------------------
-// Purpose: Header file for the TransactionFactory class.
-// ------------------------------------------------------------------------
-// Class that is responsible for determining what type of Transaction object
-// should be instantiated. Allows for dynamic binding of Transaction objects.
-// ------------------------------------------------------------------------
+// Assumptions:
+//  - File input will be provided in the formats neccessary for each type of 
+//    associated Transaction object
+
 
 #ifndef TRANSACTIONFACTORY_H
 #define TRANSACTIONFACTORY_H
@@ -27,9 +30,7 @@ class TransactionFactory {
         Transaction createTransaction(string info,
                                       HashTable<string, Movie>&,
                                       HashTable<int, Customer>&) const;
-
-    private:
-        // possible hepler methods
+                                      
 };
 
 #endif

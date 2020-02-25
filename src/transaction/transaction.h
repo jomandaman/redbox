@@ -1,13 +1,12 @@
 // ------------------------------ transaction.h --------------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 23, 2020
-// Modified: February 24, 2020
-// ------------------------------------------------------------------------
-// Purpose: Header file for the Transaction class.
-// ------------------------------------------------------------------------
-// Class representing a single transaction that may be related to Movie, Store
-// or Customer objects. 
-// ------------------------------------------------------------------------
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
+// -----------------------------------------------------------------------------
+// Purpose: This class defines an interface for a single transaction. The object
+// may be related to Movie, Store, or Customer objects depending on which type
+// of Transaction object is created.
+// -----------------------------------------------------------------------------
 
 #ifndef TRANSACTION_H
 #define TRANSACTION_H
@@ -23,19 +22,15 @@ using namespace std;
 class Transaction {
     public:
         //-------------------------------------------------Public member methods
-        // Constructor
+        // Constructor: Creates an empty Transaction object
         Transaction();
-        // Virtual destructor
+        // Virtual destructor: Destroys the Transaction object
         virtual ~Transaction();
         // Using the type of Transaction object that is instantiated, determine 
         // and conduct the necessary action
         virtual void doTransaction() const;
 
     private:
-        //------------------------------------------------Private member methods
-        // Determines if the transaction can occur based on movie & customer 
-        // information
-        virtual bool isValid(Movie) const;
 };
 
 #endif

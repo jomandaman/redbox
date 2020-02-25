@@ -1,29 +1,30 @@
 // --------------------------------- return.h ----------------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 23, 2020
-// Modified: February 24, 2020
-// ------------------------------------------------------------------------
-// Purpose: Header file for the Return class.
-// ------------------------------------------------------------------------
-// Class that represents a Customer returning a Movie from a Store. Will contain
-// information related to the specific Movie being returned as well as the
-// Customer that is returning the movie 
-// ------------------------------------------------------------------------
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
+// -----------------------------------------------------------------------------
+// Purpose: This class defines the action of a Customer returning a Movie to a
+// Store. Will contain information related to the specific Movie being returned 
+// as well as the Customer that is returning the movie 
+// -----------------------------------------------------------------------------
+// Assumptions:
+//  - File input will be provided in the following format:
+//      customerID#(int) mediaFormat(char) movieData(formatted based on genre)
 
 #ifndef RETURN_H
 #define RETURN_H
 
 #include "transaction.h"
-#include "../support/hashtable.h"
 
 using namespace std;
 
 class Return : public Transaction {
     public:
         //-------------------------------------------------Public member methods
-        // Constructor
+        // Constructor: Will create a Return object and populate the m and c 
+        // fields based on passed data
         Return(string, HashTable<string, Movie>&, HashTable<int, Customer>&);
-        // Destructor
+        // Destructor: Will delete the Return object
         virtual ~Return();
         // Will increment the stock of a movie and log the Return Transaction in
         // the Customer's history field

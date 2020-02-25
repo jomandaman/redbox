@@ -1,38 +1,44 @@
-// ------------------------------- customer.h -----------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 24, 2020
-// Modified: February 24, 2020
-// ------------------------------------------------------------------------
-// Purpose: Header file for the Customer class.
-// ------------------------------------------------------------------------
-// Represents a singular customer. Contains personal information about
-// the customer, as well as their movies and transaction history
-// ------------------------------------------------------------------------
+// -------------------------------- customer.h ---------------------------------
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
+// -----------------------------------------------------------------------------
+// Purpose: This class defines a singular customer. Contains information about
+// the customer as well as the movies they have checked out and their
+// transaction history
+// -----------------------------------------------------------------------------
+// Assumptions:
+//  - Input provided to the constructor will be given in the form of: 
+//      customerID# (int) lastName (string) firstName (string)
 
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
 #include <string>
 #include <list>
-#include <../movie/movie.h>
-#include <../transaction/transaction.h>
-#include <hashtable.h>
+#include "../support/hashtable.h"
+#include "../movie/movie.h"
+#include "../transaction/transaction.h"
 
 using namespace std;
 
 class Customer {
 
     public:
-        // Constructor
+        //-------------------------------------------------Public member methods
+        // Constructor: Will populate the customerID, firstName, and lastName 
+        // fields after parsing through the passed input string
         Customer(string);
 
     private:
+        //-------------------------------------------------Private member fields
         // Number representing the customer
         int customerID;
-        // First name of the Customer
+        // First name of the customer
         string firstName;
-        // Last name of the Customer
+        // Last name of the customer
         string lastName;
+        //------------------------------------------------Private member methods
         // All transactions from this customer
         list<Transaction> transactionHistory;
         

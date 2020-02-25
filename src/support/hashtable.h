@@ -1,12 +1,14 @@
 // ------------------------------- hashtable.h -----------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 23, 2020
-// Modified: February 24, 2020
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
 // ------------------------------------------------------------------------
-// Purpose: Header file for the HashTable class.
+// Purpose: This class will define a HashTable that stores data in an array. The
+// HashTable will use open hashing to compute the correct array index in which
+// to store the data.
 // ------------------------------------------------------------------------
-// Design for HashTable
-// ------------------------------------------------------------------------
+// Assumptions:
+//  - Only strings and ints will be accepted as Key values for this table
 
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
@@ -17,22 +19,22 @@ template<class Key, class Value>
 class HashTable {
 
     public:
-        // Constructor
+        // Constructor: Will create an empty HashTable object
         HashTable<Key, Value>();
-        // Destructor 
+        // Destructor: Will delete the HashTable object
         ~HashTable();
-        // Inserts a new object at the given key
+        // Inserts a new object at the passed Key location
         void insert(const Key&, const Value&);
-        // Removes the object at the given key
+        // Removes the object contained in the passed Key location
         void remove(const Key&);
-        // Retrieves the object present at the passed key
-        Value* retrieve(const Key&);
+        // Retrieves the object present at the passed Key location
+        Value* retrieve(const Key&) const;
 
     private: 
         // Array that holds the data
         Value* data;
-        // Hashing function: Takes in a key value and returns the hashed index
-        int hash(const Key&);
+        // Hashing function: Takes in a Key and returns the hashed index
+        int hash(const Key&) const;
 
 };
 

@@ -1,14 +1,26 @@
-// ------------------------------- store.h --------------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 23, 2020
-// Modified: February 24, 2020
-// ------------------------------------------------------------------------
-// Purpose: Header file for the Store class.
-// ------------------------------------------------------------------------
-// Represents the Store which holds all movies. Contains information on all
-// movies available and all customers that are borrowing from the store. 
-// Will conduct all actions taken in from an input files
-// ------------------------------------------------------------------------
+// ---------------------------------- store.h ----------------------------------
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
+// -----------------------------------------------------------------------------
+// Purpose: This class defines a singular store, which contains information on 
+// all available movies and all customers that are borrowing from the store. 
+// Will parse through input files to populate Movie, Customer, and Transaction
+// objects, and then execute all transactions that are created.
+// -----------------------------------------------------------------------------
+// Assumptions:
+//  - All input provided will be provided in the following formats:
+//      -Movie: genre(string) stock(int) director(string) title(string) 
+//        In addition, the following movie genre's input will also contain:
+//         Comedy: releaseYear(int) 
+//         Drama: releaseYear(int)
+//         Classics: majorActor(string) releaseMonth(int) releaseYear(int)
+//      -Customer: customerID#(int) lastName(string) firstName(string)
+//      -Transaction: actionType(char)
+//        In addition, the following transaction types will also contain:
+//         Borrow: customerID#(int) mediaFormat(char) movieData(Formatted above)
+//         Return: customerID#(int) mediaFormat(char) movieData(Formatted above)
+//         History: customerID#(int)
 
 #ifndef STORE_H
 #define STORE_H
@@ -16,36 +28,37 @@
 #include <fstream>
 #include <string>
 #include <list>
-#include <../support/bintree.h>
-#include <hashtable.h>
-#include <stdint.h>
+#include "../support/bintree.h"
+#include "../support/hashtable.h"
 
 using namespace std;
 
 class Store {
 
     public:
-        // Constructor
+        //-------------------------------------------------Public member methods
+        // Constructor: Will populate the storeName, inventory, and customers
+        // fields, while instantiating the transaction field as an empty list
         Store(string);
-        // functions
-        // Will fill the inventory field of based on data from input file
-        void populateInventory(ifstream &);
-        // Will create Customer objects and store them in the customers field
-        void populateCustomers(ifstream &);
-        // Will read in all the commands from the input file and add them to a
-        // Linked List
-        void readTransactions(ifstream &);
+        // Will fill the inventory field based on data from input an file
+        void populateInventory(ifstream&);
+        // Will fill the customers field based on data from input an file
+        void populateCustomers(ifstream&);
+        // Will fill the transactions field based on data from an input file
+        void readTransactions(ifstream&);
 
     private:
+        //-------------------------------------------------Private member fields
         // Name of the store
         string storeName;
         // All available movies
         HashTable<string, BinTree> inventory;
-        // All the Customers of the Store
+        // All the customers of the Store
         HashTable<int, Customer> customers;
         // All valid transactions that are read in from input file
         list<Transaction> transactions;
-        // Will execute all transactions from the transactions field
+        //------------------------------------------------Private member methods
+        // Will execute all transactions stored in the transactions field
         void executeTransactions();
         
 };

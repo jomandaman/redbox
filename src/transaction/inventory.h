@@ -1,12 +1,10 @@
 // ------------------------------- inventory.h ---------------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 23, 2020
-// Modified: February 24, 2020
-// ------------------------------------------------------------------------
-// Purpose: Header file for the Inventory class.
-// ------------------------------------------------------------------------
-// Class that represents the action of displaying a Store's inventory
-// ------------------------------------------------------------------------
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
+// -----------------------------------------------------------------------------
+// Purpose: This class defines the action of displaying a Store's inventory
+// -----------------------------------------------------------------------------
 
 #ifndef INVENTORY_H
 #define INVENTORY_H
@@ -18,9 +16,9 @@ using namespace std;
 class Inventory : public Transaction {
     public:
         //-------------------------------------------------Public member methods
-        // Constructor
+        // Constructor: Creates an empty Inventory object
         Inventory(HashTable<string, Movie>&);
-        // Destructor
+        // Destructor: Deletes the Inventory object
         virtual ~Inventory();
         // Prints the Store's inventory according to the specified requirements 
         // for each different category of Movie

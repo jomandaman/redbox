@@ -1,13 +1,11 @@
 // -------------------------------- history.h ----------------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 23, 2020
-// Modified: February 24, 2020
-// ------------------------------------------------------------------------
-// Purpose: Header file for the History class.
-// ------------------------------------------------------------------------
-// Class that represents the action of displaying a Customer's transaction 
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
+// -----------------------------------------------------------------------------
+// Purpose: This class defines the action of displaying a Customer's transaction 
 // history
-// ------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 #ifndef HISTORY_H
 #define HISTORY_H
@@ -19,9 +17,10 @@ using namespace std;
 class History : public Transaction {
     public:
         //-------------------------------------------------Public member methods
-        // Constructor
+        // Constructor: Will create a History object and assign a Customer
+        // object to the c field
         History(string, HashTable<int, Customer>&);
-        // Destructor
+        // Destructor: Will destroy the History object
         virtual ~History();
         // Prints the Customer's transaction history in chronological order
         virtual void doTransaction(Customer&) const;
