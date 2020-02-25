@@ -25,7 +25,7 @@ class TransactionFactory {
         // Will parse through passed parameter information to determine which
         // type of Transaction object to create and return
         Transaction createTransaction(string info,
-                                      HashTable<string, Movie)&
+                                      HashTable<string, Movie>&,
                                       HashTable<int, Customer>&) const;
 
     private:
