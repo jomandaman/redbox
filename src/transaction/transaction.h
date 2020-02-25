@@ -15,7 +15,7 @@
 #include "../movie/movie.h"
 #include "../customer/customer.h"
 #include "../store/store.h"
-#include "../hashtable.h"
+#include "../support/hashtable.h"
 #include <string>
 
 using namespace std;

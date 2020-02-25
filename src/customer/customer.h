@@ -13,10 +13,9 @@
 #define CUSTOMER_H
 
 #include <string>
-#include <integer>
 #include <list>
-#include <movie.h>
-#include <transaction.h>
+#include <../movie/movie.h>
+#include <../transaction/transaction.h>
 #include <hashtable.h>
 
 using namespace std;
@@ -25,17 +24,17 @@ class Customer {
 
     public:
         // Constructor
-        Customer(String);
+        Customer(string);
 
     private:
         // Number representing the customer
         int customerID;
         // First name of the Customer
-        String firstName;
+        string firstName;
         // Last name of the Customer
-        String lastName;
+        string lastName;
         // All transactions from this customer
-        List<Transaction> transactionHistory;
+        list<Transaction> transactionHistory;
         
 };
 

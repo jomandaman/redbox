@@ -18,7 +18,7 @@
 #include <list>
 #include <../support/bintree.h>
 #include <hashtable.h>
-#include <integer>
+#include <stdint.h>
 
 using namespace std;
 
@@ -26,7 +26,7 @@ class Store {
 
     public:
         // Constructor
-        Store(String);
+        Store(string);
         // functions
         // Will fill the inventory field of based on data from input file
         void populateInventory(ifstream &);
@@ -38,13 +38,13 @@ class Store {
 
     private:
         // Name of the store
-        String storeName;
+        string storeName;
         // All available movies
-        HashTable<String, BinTree> inventory;
+        HashTable<string, BinTree> inventory;
         // All the Customers of the Store
-        HashTable<Integer, Customer> customers;
+        HashTable<int, Customer> customers;
         // All valid transactions that are read in from input file
-        List<Transaction> transactions;
+        list<Transaction> transactions;
         // Will execute all transactions from the transactions field
         void executeTransactions();
         

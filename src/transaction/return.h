@@ -13,13 +13,16 @@
 #ifndef RETURN_H
 #define RETURN_H
 
+#include "transaction.h"
+#include "../support/hashtable.h"
+
 using namespace std;
 
 class Return : public Transaction {
     public:
         //-------------------------------------------------Public member methods
         // Constructor
-        Return(string, HashTable<string, Movie>& HashTable<int, Customer>&);
+        Return(string, HashTable<string, Movie>&, HashTable<int, Customer>&);
         // Destructor
         virtual ~Return();
         // Will increment the stock of a movie and log the Return Transaction in

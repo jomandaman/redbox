@@ -1,4 +1,4 @@
-// ---------------------------- movieFactory.h ----------------------------
+// ---------------------------- moviefactory.h ----------------------------
 // Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
 // Created: February 23, 2020
 // Modified: Februrary 24, 2020

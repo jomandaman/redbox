@@ -12,7 +12,7 @@
 #define BINTREE_H
 
 #include <iostream>
-#include "nodedata.h"
+#include "../movie/movie.h"
 
 using namespace std;
 

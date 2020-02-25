@@ -11,6 +11,8 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
+#include "transaction.h"
+
 using namespace std;
 
 class Inventory : public Transaction {

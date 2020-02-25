@@ -12,6 +12,8 @@
 #ifndef HISTORY_H
 #define HISTORY_H
 
+#include "transaction.h"
+
 using namespace std;
 
 class History : public Transaction {
@@ -30,7 +32,7 @@ class History : public Transaction {
         Customer* c;
         //------------------------------------------------Private member methods
         // Will check if a Customer exists with the given ID number
-        virtual isValid(string info, HashTable<int, Customer>&) const;
+        virtual bool isValid(string info, HashTable<int, Customer>&) const;
 };
 
 #endif

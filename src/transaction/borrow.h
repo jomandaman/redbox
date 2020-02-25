@@ -13,13 +13,15 @@
 #ifndef BORROW_H
 #define BORROW_H
 
+#include "transaction.h"
+
 using namespace std;
 
 class Borrow : public Transaction {
     public:
         //-------------------------------------------------Public member methods
         // Constructor
-        Borrow(string, HashTable<string, Movie>& HashTable<int, Customer>&);
+        Borrow(string, HashTable<string, Movie>&, HashTable<int, Customer>&);
         // Destructor
         virtual ~Borrow();
         // Will decrement the stock of a movie and log the Borrow Transaction in
@@ -36,7 +38,7 @@ class Borrow : public Transaction {
         //------------------------------------------------Private member methods
         // Will check that the movie exists in the Store's inventory and that
         // a Customer exists with the matching ID number
-        virtual isValid(string info, HashTable<char, Movie>&,
+        virtual bool isValid(string info, HashTable<char, Movie>&,
                         HashTable<int, Customer>&) const;
 };
 

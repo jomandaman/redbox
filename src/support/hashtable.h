@@ -20,7 +20,7 @@ class HashTable {
         // Constructor
         HashTable<Key, Value>();
         // Destructor 
-        ~HashTable<>();
+        ~HashTable();
         // Inserts a new object at the given key
         void insert(const Key&, const Value&);
         // Removes the object at the given key
@@ -30,7 +30,7 @@ class HashTable {
 
     private: 
         // Array that holds the data
-        Value* data[];
+        Value* data;
         // Hashing function: Takes in a key value and returns the hashed index
         int hash(const Key&);
 
