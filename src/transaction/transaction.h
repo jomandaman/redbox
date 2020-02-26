@@ -37,6 +37,9 @@ class Transaction {
         // and conduct the necessary action
         virtual void doTransaction() const;
 
+    protected:
+        // String representing the type of transaction
+        string transactionType; 
 };
 
 #endif
