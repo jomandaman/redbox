@@ -33,6 +33,8 @@ class HashTable {
     private: 
         // Array that holds the data
         Value* data;
+        // Array size
+        int size;
         // Hashing function: Takes in a Key and returns the hashed index
         int hash(const Key&) const;
 
