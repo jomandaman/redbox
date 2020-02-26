@@ -25,9 +25,12 @@ class Inventory : public Transaction {
         virtual void doTransaction(HashTable<string, Movie>&) const;
 
     private:
+        //-------------------------------------------------Private member fields
+        // All available movies in the Store
+        HashTable<string, BinTree>* inventory;
         //------------------------------------------------Private member methods
         // Will check if the Store's inventory is empty
-        virtual isValid(HashTable<char, Movie>&) const;
+        virtual bool isValid(HashTable<char, Movie>&) const;
 };
 
 #endif
