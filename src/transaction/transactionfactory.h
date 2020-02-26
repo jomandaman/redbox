@@ -15,10 +15,7 @@
 #ifndef TRANSACTIONFACTORY_H
 #define TRANSACTIONFACTORY_H
 
-#include "../movie/movie.h"
-#include "../customer/customer.h"
-#include "../store/store.h"
-#include <string>
+#include "transaction.h"
 
 using namespace std;
 

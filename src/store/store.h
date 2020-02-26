@@ -9,7 +9,7 @@
 // objects, and then execute all transactions that are created.
 // -----------------------------------------------------------------------------
 // Assumptions:
-//  - All input provided will be provided in the following formats:
+//  - All input files will be provided in the following formats:
 //      -Movie: genre(string) stock(int) director(string) title(string) 
 //        In addition, the following movie genre's input will also contain:
 //         Comedy: releaseYear(int) 

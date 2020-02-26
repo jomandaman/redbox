@@ -7,6 +7,13 @@
 // may be related to Movie, Store, or Customer objects depending on which type
 // of Transaction object is created.
 // -----------------------------------------------------------------------------
+// Assumptions:
+//  - All input data will be provided in the following format:
+//     actionType(char)
+//       In addition, the following transaction types will also contain:
+//         Borrow: customerID#(int) mediaFormat(char) movieData(Formatted above)
+//         Return: customerID#(int) mediaFormat(char) movieData(Formatted above)
+//         History: customerID#(int)
 
 #ifndef TRANSACTION_H
 #define TRANSACTION_H

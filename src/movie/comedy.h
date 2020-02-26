@@ -1,29 +1,31 @@
-// ------------------------------- comedy.h -------------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 23, 2020
-// Modified: February 24, 2020
-// ------------------------------------------------------------------------
-// Purpose: Header file for the Comedy class.
-// ------------------------------------------------------------------------
-// Specifed class for a comedy movie.
-// ------------------------------------------------------------------------
+// --------------------------------- comedy.h ----------------------------------
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
+// -----------------------------------------------------------------------------
+// Purpose: This class defines a comedy movie. It will contain all information 
+// related to the Movie and allow for comparisons to other Comedy objects.
+// -----------------------------------------------------------------------------
+// Assumptions:
+//  - All input data will be provided in the following format:
+//     genre(string) stock(int) director(string) title(string) releaseYear(int) 
 
 #ifndef COMEDY_H
 #define COMEDY_H
 
-#include <iostream>
-#include <string>
 #include "movie.h"
 
 using namespace std;
 
 class Comedy : public Movie {
     public:
-        // Constructor
+        //-------------------------------------------------Public member methods
+        // Constructor: Creates a Comedy object and populates the genre, title,
+        // director, and releaseYear fields
         Comedy(string);
-        // Virtual destructor
+        // Virtual destructor: Destroys the Comedy object
         virtual ~Comedy();
-        // Compare to other comedies for easy in-order insertion
+        // Compares this object to other Comedy objects
         virtual int compareTo(Comedy);
 
 };

@@ -1,18 +1,19 @@
 // ---------------------------- moviefactory.h ----------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 23, 2020
-// Modified: Februrary 24, 2020
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
+// -----------------------------------------------------------------------------
+// Purpose: This class defines a factory that is responsible for determining
+// what type of Movie object should be instantiated based on provided
+// input. Allows for dynamic binding of Movie objects.
 // ------------------------------------------------------------------------
-// Purpose: Header file for the MovieFactory class.
-// ------------------------------------------------------------------------
-// Class created specifically to instantiate movie objects whever needed.
-// ------------------------------------------------------------------------
+// Assumptions:
+//  - File input will be provided in the formats neccessary for each type of 
+//    associated Movie genre
 
 #ifndef MOVIEFACTORY_H
 #define MOVIEFACTORY_H
 
-#include <iostream>
-#include <string>
 #include "movie.h"
 
 using namespace std;
@@ -20,9 +21,10 @@ using namespace std;
 class MovieFactory {
 
     public:
-    // Instantiates the appropriate type of movie based on the given
-    // genre parameter
-    Movie* createMovie(string);
+        //-------------------------------------------------Public member methods
+        // Instantiates the appropriate type of movie based on the given
+        // genre parameter
+        Movie* createMovie(string);
     
 };
 

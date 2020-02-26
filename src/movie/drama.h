@@ -1,29 +1,31 @@
-// ------------------------------- drama.h --------------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias; CSS 502
-// Created: February 23, 2020
-// Modified: February 24, 2020
-// ------------------------------------------------------------------------
-// Purpose: Header file for the Drama class.
-// ------------------------------------------------------------------------
-// Specifed class for a drama movie.
-// ------------------------------------------------------------------------
+// ---------------------------------- drama.h ----------------------------------
+// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Created: 02/23/20
+// Modified: 02/25/20
+// -----------------------------------------------------------------------------
+// Purpose: This class defines a drama movie. It will contain all information 
+// related to the Movie and allow for comparisons to other Drama objects.
+// -----------------------------------------------------------------------------
+// Assumptions:
+//  - All input data will be provided in the following format:
+//     genre(string) stock(int) director(string) title(string) releaseYear(int) 
 
 #ifndef DRAMA_H
 #define DRAMA_H
 
-#include <iostream>
-#include <string>
 #include "movie.h"
 
 using namespace std;
 
 class Drama: public Movie {
     public:
-        // Constructor
+        //-------------------------------------------------Public member methods
+        // Constructor: Creates a Drama object and populates the genre, title,
+        // director, and releaseYear fields
         Drama(string);
-        // Virtual destructor
+        // Virtual destructor: Destroys the Drama object
         virtual ~Drama();
-        // Compare to other dramas for easy in-order insertion
+        // Compares this object to other Drama objects
         virtual int compareTo(Drama);
 
 };
