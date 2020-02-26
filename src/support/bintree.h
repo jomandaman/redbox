@@ -48,6 +48,9 @@ class BinTree {
         void makeEmpty();				
         // Adds a Node containing the passed parameter Movie into the tree	
         bool insert(Movie*);
+        // Gets the Movie* of a given object in the tree 
+        // (via pass-by-reference parameter)
+        bool retrieve(const Movie&, Movie&);
 	
 	private:
         struct Node {
