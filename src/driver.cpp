@@ -18,10 +18,29 @@
 #include <string>
 
 int main() {
-    Store redBox = new Store();
-    redBox.populateInventory(data4movies.txt);
-    redBox.populateCustomers(data4customers.txt);
-    redBox.readTransactions(data4commands.txt);
+    Store redBox = Store("RedBox");
+
+    ifstream data4movies("../input/data4movies.txt");
+	if (!data4movies) {
+		cout << "File: data4movies could not be opened." << endl;
+		return 1;
+	}
+
+    ifstream data4customers("../input/data4customers.txt");
+	if (!data4customers) {
+		cout << "File: data4customers could not be opened." << endl;
+		return 1;
+	}
+
+    ifstream data4commands("../input/data4commands.txt");
+	if (!data4commands) {
+		cout << "File: data4commands could not be opened." << endl;
+		return 1;
+	}
+
+    redBox.populateInventory(data4movies);
+    redBox.populateCustomers(data4customers);
+    redBox.readTransactions(data4commands);
     redBox.executeTransactions();
-    return 0
+    return 0;
 }
