@@ -46,6 +46,8 @@ class Store {
         void populateCustomers(ifstream&);
         // Will fill the transactions field based on data from an input file
         void readTransactions(ifstream&);
+        // Will execute all transactions stored in the transactions field
+        void executeTransactions();
 
     private:
         //-------------------------------------------------Private member fields
@@ -58,8 +60,6 @@ class Store {
         // All valid transactions that are read in from input file
         list<Transaction> transactions;
         //------------------------------------------------Private member methods
-        // Will execute all transactions stored in the transactions field
-        void executeTransactions();
         
 };
 
