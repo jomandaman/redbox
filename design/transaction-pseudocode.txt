@@ -1,0 +1,180 @@
+// Below is pseudocode which outlines the code flow of Transaction object
+// insantation and execution.
+
+//------------------------------------------------------------------------------
+// The Store class will direct the program to read through input and build a 
+// list of Transaction objects. Afterwards, it will go through the completed 
+// list and execute each Transaction by calling the doTransaction() method.
+Class Store {
+
+    list<Transaction> transactionList;
+    HashTable<string, BinTree> inventory;
+    HashTable<int, Customer> customers;
+
+    readTransactions(data4Commands.txt) {
+        while (!data4commands.isEmpty()) {
+            string transactionInfo = getLine(data4commands.txt);
+            Transaction T = TransactionFactory.createTransaction(transactionInfo, inventory, customers);
+            transactionList.add(T);
+        }
+    }
+
+    executeTransactions() {
+        Transaction current = transactionList.front;
+        for (Transaction t : transactionList) {
+            t.doTransaction();
+        }
+    }
+}
+
+//------------------------------------------------------------------------------
+// The TransactionFactory class will parse through the input information and
+// determine which type of Transaction object needs to be instantiated. 
+// If no valid type of object is found, it will print to the console that the
+// the letter found was not a valid Transaction type
+Class TransactionFactory {
+    
+    Transaction createTransaction(string info, HashTable<char, Movie>& inventory, HashTable<int, Customer>& customers) {
+        char type << info;
+        Transaction T;
+        switch (type):
+            case ("B"):
+                T = new Borrow(info, inventory, customers);
+                break;
+            case ("R"):
+                T = new Return(info, inventory, customers);
+                break;
+            case ("H"):
+                T = new History(info, customers);
+                break;
+            case ("I")
+                T = new Inventory(inventory);
+                break;
+            case (default):
+                cout << type << " is not a valid transaction type!";
+        return T;
+    }
+}
+
+//------------------------------------------------------------------------------
+Class Borrow : public Transaction {
+    Movie* m;
+    Customer* c;
+
+    Borrow(string input, HashTable<string, BinTree>& inventory,
+           HashTable<int, Customer>& customers) { 
+        Transaction::transactionType = "Borrow";
+        // Pull the data identifying the customer from passed info
+        string customerNum << input;
+        // Pull the data identifying the movie from passed info
+        string movieData << input.getLine();
+
+        // Use the customerNum to find the Customer object within the passed 
+        // HashTable. Store this object in this->c 
+        this->c = customers.retrieve(customerNum);
+
+        this->m = NULL;
+        Movie tmp = Movie(movieData);
+        // Use the retrieve methods of HashTable and BinTree to get the movie
+        // object associated with the passed info. Store this in this->m
+        inventory.retrieve(movieGenre)          // hashtable retrieve
+                 .retrieve(tmp, this->m);        // bintree retrieve
+    }
+
+    doTransaction() override {
+        if (this->m != NULL) {
+            if (this->m->getStockInStore() != 0) {
+                this->m->decreaseStock();
+                this->c->addToHistory(this);
+            } else {
+                cout << this->m->getTitle() << " is out of stock!" << endl;
+            }
+        } else {
+            cout << "ERROR: Requested movie does not exist" << endl;
+        }
+        
+    }
+}
+
+//------------------------------------------------------------------------------
+Class Return : public Transaction {
+    Movie* m;
+    Customer* c;
+
+    Return(string input, HashTable<string, BinTree>& inventory,
+           HashTable<int, Customer>& customers) {
+        Transaction::transactionType = "Return";
+        // Pull the data identifying the customer from passed info
+        string customerNum << input;
+        // Pull the data identifying the movie from passed info
+        string movieData << input.getLine();
+
+        // Use the customerNum to find the Customer object within the passed 
+        // HashTable. Store this object in this->c 
+        this->c = customers.retrieve(customerNum);
+
+        this->m = NULL;
+        Movie tmp = Movie(movieData);
+        // Use the retrieve methods of HashTable and BinTree to get the movie
+        // object associated with the passed info. Store this in this->m
+        inventory.retrieve(movieGenre)          // hashtable retrieve
+                 .retrieve(tmp, this->m);        // bintree retrieve
+    }
+
+    doTransaction() override {
+        if (this->m != NULL) {
+            this->m->increaseStock();
+            this->c->addToHistory(this);
+        } else {
+            cout << "ERROR: Requested movie does not exist" << endl;
+        }
+    }
+}
+
+
+//------------------------------------------------------------------------------
+Class Inventory : public Transaction {
+    HashTable<string, BinTree>* inventory;
+
+    Inventory(HashTable<string, BinTree>* i) {
+        Transaction::transactionType = "Inventory";
+        this->inventory = i;
+    }
+
+    doTransaction() override {
+        for (String key : this->inventory.getKeySet()) {
+            // Retrieve the correct BinTree by using the key
+            BinTree movieTree = this->inventory.retrieve(key);
+            // Call the output operator of BinTree to print the tree according
+            // to the required order
+            cout << movieTree;
+        }
+    }
+}
+
+//------------------------------------------------------------------------------
+Class History : public Transaction {
+    Customer* c;
+
+    History(string input, HashTable<int, Customer>& customers) {
+        Transaction::transactionType = "History";
+        // Pull the data identifying the customer from passed info
+        string customerNum << input;
+        // Use the customerNum to find the Customer object within the passed 
+        // HashTable. Store this object in this->c 
+        this->c = customers.retrieve(customerNum);
+    }
+
+    doTransaction() override {
+        list<Transaction> history = this->c->getHistory();
+        while (!history.empty()) {
+            Transaction t = history.pop_back();
+            cout << t.getTitle();
+            if (t.transactionType.compare("Borrow")) {
+                cout << " was borrowed" << endl;
+            } else if (t.transactionType.compare("Return")) {
+                cout << " was returned" << endl;
+            }
+        }
+    }
+}
