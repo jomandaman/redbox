@@ -44,18 +44,24 @@ class Movie {
         int getReleaseYear();
         // Returns how many copies of the movie are available in the store
         int getStockInStore();
+        // Increase the stock by 1
+        void increaseStock();
+        // Decrease the stock by 1
+        void decreaseStock();
         // Will compare this Movie object to the passed parameter Movie object.
         // Returns 1 if this is greater than the parameter, -1 if this is less 
         // than the parameter, and 0 if the two Movies are equal. 
         virtual int compareTo(Movie);
 
-    private:
+    protected:
         // Genre of the movie
         string genre;
         // Director of the movie
         string director;
         // Title of the movie
         string title;
+        // Format that the movie is stored as
+        string format;
         // Year the movie was released
         int releaseYear;
         // How many copies of this movie are currently in the store
