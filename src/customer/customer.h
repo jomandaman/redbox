@@ -29,7 +29,10 @@ class Customer {
         // Constructor: Will populate the customerID, firstName, and lastName 
         // fields after parsing through the passed input string
         Customer(string);
-
+        // Adds a Transaction object to the transactionHistory field
+        void addToHistory(const Transaction&);
+        // Returns the transactionHistory field
+        list<Transaction> getHistory();
     private:
         //-------------------------------------------------Private member fields
         // Number representing the customer
