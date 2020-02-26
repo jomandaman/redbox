@@ -30,7 +30,6 @@ class Transaction {
         // and conduct the necessary action
         virtual void doTransaction() const;
 
-    private:
 };
 
 #endif
