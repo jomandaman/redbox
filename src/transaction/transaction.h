@@ -18,17 +18,22 @@
 #ifndef TRANSACTION_H
 #define TRANSACTION_H
 
-#include "../movie/movie.h"
-#include "../customer/customer.h"
-#include "../store/store.h"
-#include "../support/hashtable.h"
 #include <string>
+#include <iostream>
+#include <sstream>
+#include "../movie/movie.h"
+#include "../movie/moviefactory.h"
+#include "../support/hashtable.h"
+#include "../support/inventorycontainer.h"
 
 using namespace std;
 
 class Transaction {
     public:
-        //-------------------------------------------------Public member methods
+        // Will check that the movie exists in the Store's inventory and that
+        // a Customer exists with the matching ID number
+        bool isValid;
+    //-------------------------------------------------Public member methods
         // Constructor: Creates an empty Transaction object
         Transaction();
         // Virtual destructor: Destroys the Transaction object
@@ -39,7 +44,11 @@ class Transaction {
 
     protected:
         // String representing the type of transaction
-        string transactionType; 
+        string transactionType;
+    
+        //------------------------------------------------Private member methods
+        
+        
 };
 
 #endif

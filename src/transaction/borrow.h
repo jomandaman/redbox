@@ -14,7 +14,8 @@
 #ifndef BORROW_H
 #define BORROW_H
 
-#include "transaction.h"
+#include "../transaction/transaction.h"
+#include "../customer/customer.h"
 
 using namespace std;
 
@@ -23,12 +24,12 @@ class Borrow : public Transaction {
         //-------------------------------------------------Public member methods
         // Constructor: Will create a Borrow object and populate the m and c
         // fields based on passed data
-        Borrow(string, HashTable<string, Movie>&, HashTable<int, Customer>&);
+        Borrow(string, InventoryContainer&, HashTable<Customer>&);
         // Destructor: Will destroy the Borrow object
         virtual ~Borrow();
         // Will decrement the stock of a movie and log the Borrow Transaction in
         // the Customer's history field
-        virtual void doTransaction(Store&, Customer&, Movie&) const;
+        virtual void doTransaction() const;
 
     private:
         //-------------------------------------------------Private member fields
@@ -36,12 +37,7 @@ class Borrow : public Transaction {
         Movie* m;
         // Pointer to the Customer object associated with this transaction
         Customer* c;
-        
-        //------------------------------------------------Private member methods
-        // Will check that the movie exists in the Store's inventory and that
-        // a Customer exists with the matching ID number
-        virtual bool isValid(string info, HashTable<char, Movie>&,
-                             HashTable<int, Customer>&) const;
+
 };
 
 #endif

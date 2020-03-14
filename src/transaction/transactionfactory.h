@@ -16,6 +16,14 @@
 #define TRANSACTIONFACTORY_H
 
 #include "transaction.h"
+#include "return.h"
+#include "borrow.h"
+#include "inventory.h"
+#include "history.h"
+#include "../movie/movie.h"
+#include "../customer/customer.h"
+#include "../support/hashtable.h"
+
 
 using namespace std;
 
@@ -24,9 +32,7 @@ class TransactionFactory {
         //-------------------------------------------------Public member methods
         // Will parse through passed parameter information to determine which
         // type of Transaction object to create and return
-        Transaction createTransaction(string info,
-                                      HashTable<string, Movie>&,
-                                      HashTable<int, Customer>&) const;
+        static Transaction* createTransaction(string info, InventoryContainer&, HashTable<Customer>&) ;
                                       
 };
 

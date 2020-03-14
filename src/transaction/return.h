@@ -15,6 +15,7 @@
 #define RETURN_H
 
 #include "transaction.h"
+#include "../customer/customer.h"
 
 using namespace std;
 
@@ -23,12 +24,12 @@ class Return : public Transaction {
         //-------------------------------------------------Public member methods
         // Constructor: Will create a Return object and populate the m and c 
         // fields based on passed data
-        Return(string, HashTable<string, Movie>&, HashTable<int, Customer>&);
+        Return(string, InventoryContainer&, HashTable<Customer>&);
         // Destructor: Will delete the Return object
         virtual ~Return();
         // Will increment the stock of a movie and log the Return Transaction in
         // the Customer's history field
-        virtual void doTransaction(Store&, Customer&, Movie&) const;
+        virtual void doTransaction() const;
 
     private:
         //-------------------------------------------------Private member fields
@@ -37,11 +38,8 @@ class Return : public Transaction {
         // Pointer to the Customer object associated with this transaction
         Customer* c;
         
-        //------------------------------------------------Private member methods
-        // Will check that the movie exists in the Store's inventory and that
-        // a Customer exists with the matching ID number
-        virtual isValid(string info, HashTable<char, Movie>&,
-                        HashTable<int, Customer>&);
+        
+        
 };
 
 #endif

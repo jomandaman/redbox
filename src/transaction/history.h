@@ -11,6 +11,7 @@
 #define HISTORY_H
 
 #include "transaction.h"
+#include "../customer/customer.h"
 
 using namespace std;
 
@@ -19,19 +20,18 @@ class History : public Transaction {
         //-------------------------------------------------Public member methods
         // Constructor: Will create a History object and assign a Customer
         // object to the c field
-        History(string, HashTable<int, Customer>&);
+        History(string, HashTable<Customer>&);
         // Destructor: Will destroy the History object
         virtual ~History();
         // Prints the Customer's transaction history in chronological order
-        virtual void doTransaction(Customer&) const;
+        virtual void doTransaction() const;
 
     private:
         //-------------------------------------------------Private member fields
         // Pointer to the Customer object associated with this transaction
         Customer* c;
         //------------------------------------------------Private member methods
-        // Will check if a Customer exists with the given ID number
-        virtual bool isValid(string info, HashTable<int, Customer>&) const;
+
 };
 
 #endif
