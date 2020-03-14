@@ -15,72 +15,134 @@
 
 #ifndef BINTREE_H
 #define BINTREE_H
-
-#include <iostream>
+#include <stdio.h>
 #include "../movie/movie.h"
+
 
 using namespace std;
 
-class BinTree {				
+class BinTree {
 
-	public:
-        //---------------------------------------------Constructors & Destructor
-        // Default constructor: Creates and empty BinTree
-        BinTree();						
-        // Copy constructor: Creates a deep copy of the passed BinTree object
-        BinTree(const BinTree&);		
-        // Destructor: Destroys a BinTree by de-allocating the tree nodes
-        ~BinTree();		
-        //---------------------------------------------------Assignment operator
-        // Assigns the value of the BinTree object on the right of the operator
-        // to the one on the left of the operator
-        BinTree& operator=(const BinTree&);
-        //--------------------------------------------------Comparison operators
-        // Returns true if two BinTree objects contain the exact same Nodes in
-        // the same order
-        bool operator==(const BinTree&) const;
-        // Returns true if two BinTree objects differ in any way
-        bool operator!=(const BinTree&) const;
-        //-------------------------------------------------Public member methods
-        // Returns true if the tree is empty, false if not
-        bool isEmpty() const;			
-        // Empties the BinTree object
-        void makeEmpty();				
-        // Adds a Node containing the passed parameter Movie into the tree	
-        bool insert(Movie*);
-        // Gets the Movie* of a given object in the tree 
-        // (via pass-by-reference parameter)
-        bool retrieve(const Movie&, Movie&);
-	
-	private:
-        struct Node {
-            // Pointer to the data, which is stored in a Movie object
-            Movie* data;
-            // Pointer to the left child
-            Node* left;					
-            // Pointer to the right child
-            Node* right;
-        };
-        // Root of the tree
-        Node* root;	
-		//------------------------------------------------Private member methods
-        // Helper method that locates a Node with target data and copies the
-        // memory of the found Node in a parameter. Will return false if no Node
-        // is found 
-        bool findNode(Node*, const Movie&, Node*&) const;
-        // Helper method to compare values and structure of two trees. Returns
-        // true if both trees contain identical values stored in the same order
-        bool equalityHelper(const Node*, const Node*) const;
-        // Helper method for the assignment operator(=). Will create a deep copy
-        // of the second passed Node by copying all its values into the first
-        void assignmentHelper(Node*&, const Node*);
-        // Deletes a Node and all of the Nodes nested underneath it by
-        // deallocating the Movie they contain and then the Node itself
-        void deleteSubtree(Node*&);
-        // Helper method to take in a Movie and find the correct location to add
-        // it in the tree. Will return false if the data already exists in tree
-        bool insertHelper(Node*&, Movie*);
+    
+public:
+    // Constructor/Destructor //////////////////////////////////////////////
+    
+    // BinTree ---------------------------------------------------------
+    // Default Constructor : creates an empty BinTree and sets root to NULL
+    BinTree();
+    
+    // BinTree ----------------------------------------------------------
+    // Copy Constructor : creates a BinTree and creates a deep copy of the
+    // inputTree, setting it to this
+    BinTree(const BinTree &);
+    
+    // ~BinTree ----------------------------------------------------------
+    // Destructor : Deallocates all nodes of BinTree and sets root to NULL
+    ~BinTree();
+    
+    
+    // Assignment Operators ////////////////////////////////////////////////
+    
+    // operator= --------------------------------------------------------
+    // overloaded =: true if this BinTree != parameter BinTree, false if not
+    BinTree& operator=(const BinTree &);
+    
+    
+    // Equality Operators //////////////////////////////////////////////////
+    
+    // operator== ---------------------------------------------------------
+    // overloaded ==: true if this BinTree == parameter BinTree, false if not
+    bool operator==(const BinTree &) const;
+    
+    // operator!= ---------------------------------------------------------
+    // overloaded !=: true if this BinTree != parameter BinTree, false if not
+    bool operator!=(const BinTree &) const;
+    
+    // Mutators ////////////////////////////////////////////////////////////
+    
+    // insert ---------------------------------------------------------------
+    // inserts a new Node containing the input newData into the BinTree object
+    bool insert(Movie*);
+    
+    // makeEmpty ------------------------------------------------------------
+    // deallocates all nodes of the BinTree object in this and sets root to NULL
+    void makeEmpty();
 
+    
+    // Accessors ///////////////////////////////////////////////////////////
+    
+    // retrieve ------------------------------------------------------------
+    // returns the bool value of whether data desired is in this tree, modifying
+    // the dataRetrieved directly to be NodeData object, if found
+    bool retrieve(const Movie &, Movie* &);
+    
+    // getHeight ------------------------------------------------------------
+    // returns the height of a general tree of a given value.
+    int getHeight (const Movie &) const;
+
+    // isEmpty ---------------------------------------------------------------
+    // true if tree is empty, otherwise
+    bool isEmpty() const;
+    
+    
+    // Output Functions /////////////////////////////////////////////////////
+    
+    // operator<< -------------------------------------------------------
+    // Prints an inorder traversal of the tree
+    friend ostream& operator<<(ostream &out, const BinTree &); 
+    
+private:
+    
+    // Custom structure for Nodes to be used in BinTree
+    struct Node {
+        Movie* data;                        // pointer to data object
+        Node* left;                            // left subtree pointer
+        Node* right;                           // right subtree pointer
+    };
+    Node* root;                                // root of the tree
+
+    
+    // Utility functions //////////////////////////////////////////////
+        
+    // inorderHelper -----------------------------------------------------
+    // helper for operator<< overloaded method by recursively moving through the BinTree
+    void inorderHelper(Node*) const;
+    
+    // makeEmptyHelper ----------------------------------------------------
+    // helper function for makeEmpty. Deallocates all nodes of the BinTree
+    void makeEmptyHelper(Node* &);
+    
+    // duplicateTree -------------------------------------------------------
+    // recursively copies nodes from rhs to lhs, duplicating entire tree
+    void duplicateTree(Node* &, Node*);
+    
+    // equalityHelper -----------------------------------------------------
+    // recursively compares rhs nodes to lhs, throughout entire tree
+    bool equalityHelper(Node*, Node*) const;
+    
+    // insertHelper ---------------------------------------------------------
+    // Helper function for insert. Recursively inserts a new Node containing
+    // the input newData
+    bool insertHelper(Node* &, Movie*);
+    
+    // retrieveHelper -------------------------------------------------------
+    // recursive helper function for retrieve function. Returns the bool value
+    // of whether data desired is in this tree,modifying the dataRetrieved
+    // directly to be NodeData object, if found
+    bool retrieveHelper(Node* &, const Movie &, Movie* &) const;
+    
+    // getHeightHelper ----------------------------------------------------
+    // recurisve helper function for getHeight. Returns the height of a
+    // general tree of a given value. Height of a leaf node is 1, and a value
+    // not found is 0.
+    int getHeightHelper (Node*, const Movie &) const;
+    
+    // getHeight ----------------------------------------------------------
+    // overloaded getHeight recursively returns the height of a general tree
+    // of the given node. The height of a leaf node is 1, and cur == NULL
+    // returns zero.
+    int getHeight (Node*) const;
+        
 };
 
 #endif

@@ -13,31 +13,45 @@
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
 
+
 using namespace std;
 
-template<class Key, class Value> 
+template<typename T>
 class HashTable {
 
     public:
+        // Default Constructor: Will create an empty HashTable object
+        HashTable();
         // Constructor: Will create an empty HashTable object
-        HashTable<Key, Value>();
+        HashTable(int);
         // Destructor: Will delete the HashTable object
         ~HashTable();
         // Inserts a new object at the passed Key location
-        void insert(const Key&, const Value&);
+        bool insert(int, T);
         // Removes the object contained in the passed Key location
-        void remove(const Key&);
+        bool remove(int);
         // Retrieves the object present at the passed Key location
-        Value* retrieve(const Key&) const;
+        bool retrieve(int, T*) const;
 
     private: 
+    
+        struct HashEntry {
+                int key;
+                T* value;
+            
+            //HashEntry() : key(k), value(v) {}
+        };
+    
         // Array that holds the data
-        Value* data;
+        HashEntry** data;
         // Array size
         int size;
         // Hashing function: Takes in a Key and returns the hashed index
-        int hash(const Key&) const;
+        int hash(int) const;
+        void resize();
 
 };
+
+#include "hashtable.cpp"
 
 #endif
