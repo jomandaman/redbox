@@ -1,14 +1,14 @@
-// ---------------------------------- drama.h ----------------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// ---------------------------------- drama.h ---------------------------------
+// Enina Bogdani, Josiah Zacharias
 // Created: 02/23/20
-// Modified: 02/25/20
-// -----------------------------------------------------------------------------
+// Modified:
+// ----------------------------------------------------------------------------
 // Purpose: This class defines a drama movie. It will contain all information 
 // related to the Movie and allow for comparisons to other Drama objects.
-// -----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // Assumptions:
 //  - All input data will be provided in the following format:
-//     genre(string) stock(int) director(string) title(string) releaseYear(int) 
+//     genre(string) stock(int) director(string) title(string) releaseYear(int)
 
 #ifndef DRAMA_H
 #define DRAMA_H
@@ -25,9 +25,8 @@ class Drama: public Movie {
         Drama(string);
         // Virtual destructor: Destroys the Drama object
         virtual ~Drama();
-        // Compares this object to other Drama objects
-        virtual int compareTo(Drama);
-
+        // Returns the movie release year
+        virtual int compareTo(Drama*);
 };
 
 #endif

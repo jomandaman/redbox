@@ -24,7 +24,7 @@ class MovieFactory {
         //-------------------------------------------------Public member methods
         // Instantiates the appropriate type of movie based on the given
         // genre parameter
-        Movie* createMovie(string);
+        static Movie* createMovie(char, string);
     
 };
 

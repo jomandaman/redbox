@@ -1,7 +1,7 @@
 // ---------------------------------- movie.h ----------------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Enina Bogdani, Josiah Zacharias
 // Created: 02/23/20
-// Modified: 02/25/20
+// Modified:
 // -----------------------------------------------------------------------------
 // Purpose: This class defines a singular Movie object. The movie will contain
 // information on the genre, director, title, release year, and current stock in
@@ -21,6 +21,7 @@
 #define MOVIE_H
 
 #include <iostream>
+#include <sstream>
 #include <string>
 
 using namespace std;
@@ -29,9 +30,8 @@ class Movie {
 
     public:
         //-------------------------------------------------Public member methods
-        // Constructor: Creates a Movie object and populates the genre, director
-        // title, and releaseYear fields
-        Movie(string);
+        // Defaut constructor
+        Movie();
         // Virtual destructor: Destroys the Movie object
         virtual ~Movie();
         // Returns the movie genre
@@ -51,22 +51,21 @@ class Movie {
         // Will compare this Movie object to the passed parameter Movie object.
         // Returns 1 if this is greater than the parameter, -1 if this is less 
         // than the parameter, and 0 if the two Movies are equal. 
-        virtual int compareTo(Movie);
+        virtual int compareTo(Movie*) = 0;
 
     protected:
         // Genre of the movie
         string genre;
+        // How many copies of this movie are currently in the store
+        int stockInStore;
         // Director of the movie
         string director;
         // Title of the movie
         string title;
-        // Format that the movie is stored as
-        string format;
-        // Year the movie was released
+        // // Year the movie was released
         int releaseYear;
-        // How many copies of this movie are currently in the store
-        int stockInStore;
-
+        //Format that the movie is stored as
+        string format;
 };
 
 #endif

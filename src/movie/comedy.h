@@ -1,5 +1,5 @@
 // --------------------------------- comedy.h ----------------------------------
-// Enina Bogdani, Rossini Higgins, David Kang, Josiah Zacharias
+// Enina Bogdani, Josiah Zacharias
 // Created: 02/23/20
 // Modified: 02/25/20
 // -----------------------------------------------------------------------------
@@ -26,8 +26,7 @@ class Comedy : public Movie {
         // Virtual destructor: Destroys the Comedy object
         virtual ~Comedy();
         // Compares this object to other Comedy objects
-        virtual int compareTo(Comedy);
-
+        virtual int compareTo(Comedy*);
 };
 
 #endif
