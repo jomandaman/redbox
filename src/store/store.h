@@ -28,8 +28,13 @@
 #include <fstream>
 #include <string>
 #include <list>
-#include "../support/bintree.h"
+#include "../movie/movie.h"
+#include "../customer/customer.h"
 #include "../support/hashtable.h"
+#include "../support/bintree.h"
+#include "../support/inventorycontainer.h"
+#include "../transaction/transaction.h"
+#include "../transaction/transactionfactory.h"
 
 using namespace std;
 
@@ -40,6 +45,8 @@ class Store {
         // Constructor: Will populate the storeName, inventory, and customers
         // fields, while instantiating the transaction field as an empty list
         Store(string);
+        // Destructor: Will delete and reset values to null
+        ~Store();
         // Will fill the inventory field based on data from input an file
         void populateInventory(ifstream&);
         // Will fill the customers field based on data from input an file
@@ -54,12 +61,14 @@ class Store {
         // Name of the store
         string storeName;
         // All available movies
-        HashTable<string, BinTree> inventory;
+        InventoryContainer inventory;
         // All the customers of the Store
-        HashTable<int, Customer> customers;
+        HashTable<Customer> customers;
         // All valid transactions that are read in from input file
         list<Transaction> transactions;
+    
         //------------------------------------------------Private member methods
+        static const int maxCustomers = 10000;
         
 };
 
